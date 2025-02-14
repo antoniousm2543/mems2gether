@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 20px;
+        }
+        .image {
+            width: 75%;
+            max-width: 850px;
+            border-radius: 25px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+            margin: 15px 0;
+            position: relative;
+        }
+        .qr-code {
+            width: 250px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        .passcode-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .overlay {
+            position: absolute;
+            width: 250px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+        }
+        .overlay:nth-child(2) {
+            top: 10px;
+            right: 10px;
+        }
+        .overlay:nth-child(3) {
+            top: 10px;
+            left: 10px;
+        }
+        .overlay:nth-child(4) {
+            top: 10px;
+            right: 10px;
+        }
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="passcode-container">
+        <h2>Enter Passcode</h2>
+        <input type="password" id="passcode" placeholder="Enter Passcode">
+        <button onclick="checkPasscode()">Submit</button>
+    </div>
+    
+    <div class="container" id="gallery">
+        <img src="IMG_5217.JPG" class="image" alt="Image 1">
+        <img src="IMG_5218.JPG" class="image" alt="Image 2">
+        <div class="image-wrapper">
+            <img src="IMG_8556.JPG" class="image" alt="Image 3">
+            <img src="Unknown.jpeg" class="overlay" alt="Overlay 1">
+        </div>
+        <img src="IMG_9284.jpeg" class="image" alt="Image 4">
+        <div class="image-wrapper">
+            <img src="IMG_7108.jpeg" class="image" alt="Image 5">
+            <img src="Unknown-1.jpeg" class="overlay" alt="Overlay 2">
+        </div>
+        <img src="IMG_6637.jpeg" class="image" alt="Image 6">
+        <div class="image-wrapper">
+            <img src="IMG_1752.JPG" class="image" alt="Image 7">
+            <img src="Unknown-2.jpeg" class="overlay" alt="Overlay 3">
+        </div>
+        <img src="IMG_7449.jpg" class="image" alt="Image 8">
+        <img src="IMG_7243.jpg" class="image" alt="Image 9">
+        <img src="ECA7BC53-2A42-40CB-B330-CDF5042C5A7B.JPEG" class="image" alt="Image 10">
+        <img src="QR_CODE.png" class="qr-code" alt="QR Code">
+    </div>
+    
+    <script>
+        function checkPasscode() {
+            var passcode = document.getElementById("passcode").value;
+            if (passcode === "071522") {
+                document.querySelector(".passcode-container").style.display = "none";
+                document.getElementById("gallery").style.display = "flex";
+            } else {
+                alert("Incorrect passcode. Try again.");
+            }
+        }
+    </script>
+</body>
+</html>
